@@ -31,6 +31,8 @@ from prepdocslib.strategy import DocumentAction, SearchInfo, Strategy
 from prepdocslib.textparser import TextParser
 from prepdocslib.textsplitter import SentenceTextSplitter, SimpleTextSplitter
 
+from prepdocslib.csvparser import CSVParser
+
 logger = logging.getLogger("ingester")
 
 
@@ -191,6 +193,7 @@ def setup_file_processors(
         ".heic": FileProcessor(doc_int_parser, sentence_text_splitter),
         ".md": FileProcessor(TextParser(), sentence_text_splitter),
         ".txt": FileProcessor(TextParser(), sentence_text_splitter),
+        ".csv": FileProcessor(CSVParser(), SimpleTextSplitter()),
     }
 
 
