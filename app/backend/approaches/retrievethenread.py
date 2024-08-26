@@ -21,12 +21,24 @@ class RetrieveThenReadApproach(Approach):
         "あなたはヘルプデスク担当者の補佐だ。ヘルプデスク担当者のユーザ質問に対し、考えられる原因や対策及び類似する過去事例（過去インシデント）を提示し、ヘルプデスクの業務遂行の手助けをする"
         + "質問に提供された資料のみを使用して回答してください。 "
         + "複数の異なる事象（過去インシデント）を組み合わせて回答を生成しない。"
-        + "参考にしたインシデントの'No', '受付日時'及び'受付概要'を回答の末尾に記載する"
+        + "参考にしたインシデントの'No', '受付日時'及び'受付概要'を回答の末尾に記載する。"
         + "類似する過去インシデントがない場合は、初事象として扱い、'類似する過去インシデントがありませんでした。初事象だと考えられます'と回答する。"
+        + "ユーザーは時々システムの別名でシステムを呼ぶ。例えば、'需要予測支援システム'を'予測支援'または'中食需要予測支援'と、'原材料品質保証システム'を'品証'または'メルクリウス'と、'中食表示システム'を'表示'と、'商品規格書システム'を'規格書'または'商品規格書'と、'中食データハブシステム'を'データハブ'と、'原材料受発注システム'を'原受'または'原受発注'と、'FISC-基本データ管理'を'基本データ'と、'OD-View'を'Dr. Sum'と、'需給管理'を'需給"と、'サンプル受発注'を'サンプル'と呼ぶ。"
     )
 
     # shots/sample conversation
-    question = """
+    question1 = """
+'原材料品質?'
+
+Sources:
+info1.txt: deductibles depend on whether you are in-network or out-of-network. In-network deductibles are $500 for employee and $1000 for family. Out-of-network deductibles are $1000 for employee and $2000 for family.
+info2.pdf: Overlake is in-network for the employee plan.
+info3.pdf: Overlake is the name of the area that includes a park and ride near Bellevue.
+info4.pdf: In-network institutions include Overlake, Swedish and others in the region
+"""
+    answer = "In-network deductibles are $500 for employee and $1000 for family [info1.txt] and Overlake is in-network for the employee plan [info2.pdf][info4.pdf]."
+
+    question2 = """
 'What is the deductible for the employee plan for a visit to Overlake in Bellevue?'
 
 Sources:
@@ -36,6 +48,18 @@ info3.pdf: Overlake is the name of the area that includes a park and ride near B
 info4.pdf: In-network institutions include Overlake, Swedish and others in the region
 """
     answer = "In-network deductibles are $500 for employee and $1000 for family [info1.txt] and Overlake is in-network for the employee plan [info2.pdf][info4.pdf]."
+
+    question3 = """
+'What is the deductible for the employee plan for a visit to Overlake in Bellevue?'
+
+Sources:
+info1.txt: deductibles depend on whether you are in-network or out-of-network. In-network deductibles are $500 for employee and $1000 for family. Out-of-network deductibles are $1000 for employee and $2000 for family.
+info2.pdf: Overlake is in-network for the employee plan.
+info3.pdf: Overlake is the name of the area that includes a park and ride near Bellevue.
+info4.pdf: In-network institutions include Overlake, Swedish and others in the region
+"""
+    answer = "In-network deductibles are $500 for employee and $1000 for family [info1.txt] and Overlake is in-network for the employee plan [info2.pdf][info4.pdf]."
+
 
     def __init__(
         self,
