@@ -125,7 +125,7 @@ class ChatReadRetrieveReadApproach(ChatApproach):
         ]
 
         # STEP 1: Generate an optimized keyword search query based on the chat history and the last question
-        query_response_token_limit = 100
+        query_response_token_limit = 500
         query_messages = build_messages(
             model=self.chatgpt_model,
             system_prompt=self.query_prompt_template,
@@ -180,7 +180,7 @@ class ChatReadRetrieveReadApproach(ChatApproach):
             self.follow_up_questions_prompt_content if overrides.get("suggest_followup_questions") else "",
         )
 
-        response_token_limit = 1024
+        response_token_limit = 3000
         messages = build_messages(
             model=self.chatgpt_model,
             system_prompt=system_message,
