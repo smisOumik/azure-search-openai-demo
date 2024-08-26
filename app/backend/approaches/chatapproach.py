@@ -29,11 +29,13 @@ class ChatApproach(Approach, ABC):
     query_prompt_template = """Below is a history of the conversation so far, and a new question asked by the user that needs to be answered by searching in a knowledge base.
     You have access to Azure AI Search index with 100's of documents.
     Generate a search query based on the conversation and the new question.
-    Do not include cited source filenames and document names e.g info.txt or doc.pdf in the search query terms.
+    User will use informal names to call the systems when they asked questions, for example: "予測支援" or "中食需要予測支援" for "需要予測支援システム", "品証" or "メルクリウス"
+    for "原材料品質保証システム", "表示" for "中食表示システム", "規格書" or "商品規格書" for "商品規格書システム", "データハブ" for "中食データハブシステム", "原受" or "原受発注" for "原材料受発注システム",
+    "基本データ" for "FISC-基本データ管理", "Dr. Sum" for "OD-View", "需給" for "需給管理" and "サンプル" for "サンプル受発注".
     Do not include any text inside [] or <<>> in the search query terms.
     Do not include any special characters like '+'.
-    If the question is not in English, translate the question to English before generating the search query.
-    If you cannot generate a search query, return just the number 0.
+    Generate the search query in Japanese.
+    If you cannot generate a search query, ask the user to refine the question or provide more information in Japanese.
     """
 
     @property
