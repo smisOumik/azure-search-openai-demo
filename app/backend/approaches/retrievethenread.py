@@ -18,11 +18,11 @@ class RetrieveThenReadApproach(Approach):
     """
 
     system_chat_template = (
-        "You are an intelligent assistant helping Contoso Inc employees with their healthcare plan questions and employee handbook questions. "
-        + "Use 'you' to refer to the individual asking the questions even if they ask with 'I'. "
-        + "Answer the following question using only the data provided in the sources below. "
-        + "Each source has a name followed by colon and the actual information, always include the source name for each fact you use in the response. "
-        + "If you cannot answer using the sources below, say you don't know. Use below example to answer"
+        "あなたはヘルプデスク担当者の補佐だ。ヘルプデスク担当者のユーザ質問に対し、考えられる原因や対策及び類似する過去事例（過去インシデント）を提示し、ヘルプデスクの業務遂行の手助けをする"
+        + "質問に提供された資料のみを使用して回答してください。 "
+        + "複数の異なる事象（過去インシデント）を組み合わせて回答を生成しない。"
+        + "参考にしたインシデントの'No', '受付日時'及び'受付概要'を回答の末尾に記載する"
+        + "類似する過去インシデントがない場合は、初事象として扱い、'類似する過去インシデントがありませんでした。初事象だと考えられます'と回答する。"
     )
 
     # shots/sample conversation
