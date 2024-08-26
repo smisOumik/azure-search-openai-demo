@@ -27,39 +27,15 @@ class RetrieveThenReadApproach(Approach):
     )
 
     # shots/sample conversation
-    question1 = """
-'原材料品質?'
+    question = """
+'原材料品質保証システムにログインできない、理由は?'
 
 Sources:
-info1.txt: deductibles depend on whether you are in-network or out-of-network. In-network deductibles are $500 for employee and $1000 for family. Out-of-network deductibles are $1000 for employee and $2000 for family.
-info2.pdf: Overlake is in-network for the employee plan.
-info3.pdf: Overlake is the name of the area that includes a park and ride near Bellevue.
-info4.pdf: In-network institutions include Overlake, Swedish and others in the region
+No.13619: ポップアップブロックが設定されている。原因: AAA。対処法: BBB
+No.14357: 設定が間違っている。原因: ccc。対処法: ddd
+No.14276: 削除済のアカウントである。原因: eee。対処法: fff
 """
-    answer = "In-network deductibles are $500 for employee and $1000 for family [info1.txt] and Overlake is in-network for the employee plan [info2.pdf][info4.pdf]."
-
-    question2 = """
-'What is the deductible for the employee plan for a visit to Overlake in Bellevue?'
-
-Sources:
-info1.txt: deductibles depend on whether you are in-network or out-of-network. In-network deductibles are $500 for employee and $1000 for family. Out-of-network deductibles are $1000 for employee and $2000 for family.
-info2.pdf: Overlake is in-network for the employee plan.
-info3.pdf: Overlake is the name of the area that includes a park and ride near Bellevue.
-info4.pdf: In-network institutions include Overlake, Swedish and others in the region
-"""
-    answer = "In-network deductibles are $500 for employee and $1000 for family [info1.txt] and Overlake is in-network for the employee plan [info2.pdf][info4.pdf]."
-
-    question3 = """
-'What is the deductible for the employee plan for a visit to Overlake in Bellevue?'
-
-Sources:
-info1.txt: deductibles depend on whether you are in-network or out-of-network. In-network deductibles are $500 for employee and $1000 for family. Out-of-network deductibles are $1000 for employee and $2000 for family.
-info2.pdf: Overlake is in-network for the employee plan.
-info3.pdf: Overlake is the name of the area that includes a park and ride near Bellevue.
-info4.pdf: In-network institutions include Overlake, Swedish and others in the region
-"""
-    answer = "In-network deductibles are $500 for employee and $1000 for family [info1.txt] and Overlake is in-network for the employee plan [info2.pdf][info4.pdf]."
-
+    answer = "原材料品質保証システムにログインできない場合、以下の原因が考えられます.<br>1.ポップアップブロックが設定されている。原因: AAA。対処法: BBB <br>参考インシデント-No.13619,受付概要-【品証】ログインできない,受付日-2024/8/14 <br> 2. 削除済のアカウントである。原因: eee。対処法: fff <br>参考インシデント-No.14276,受付概要-【品証】ログイン画面が表示できない,受付日-2024/2/2"
 
     def __init__(
         self,
