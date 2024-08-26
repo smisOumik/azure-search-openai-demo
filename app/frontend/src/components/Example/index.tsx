@@ -1,2 +1,1 @@
-export * from "./Example";
-export * from "./ExampleList";
+export { default } from './ExampleList';
