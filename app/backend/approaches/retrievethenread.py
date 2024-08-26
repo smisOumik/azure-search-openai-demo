@@ -114,7 +114,7 @@ info4.pdf: In-network institutions include Overlake, Swedish and others in the r
         content = "\n".join(sources_content)
         user_content = q + "\n" + f"Sources:\n {content}"
 
-        response_token_limit = 1024
+        response_token_limit = 3000
         updated_messages = build_messages(
             model=self.chatgpt_model,
             system_prompt=overrides.get("prompt_template", self.system_chat_template),
