@@ -1,32 +1,23 @@
-import { Example } from "./Example";
+import React from 'react';
+import Example from './Example';
+import styles from './Example-module.css';
 
-import styles from "./Example.module.css";
-
-const DEFAULT_EXAMPLES: string[] = [
-    "What is included in my Northwind Health Plus plan that is not in standard?",
-    "What happens in a performance review?",
-    "What does a Product Manager do?"
+const templates = [
+  "記載ルール: テンプレートをコピーして貼り付け、必要事項を編集してください。「」の部分のみ修正すること。編集後「」を削除すること。改行を入れないでください。",
+  "以下コピーしてください。<br> # リクエスト <br> - 「システム名を記載」に関する問合せがきました。「聞きたいことを記載」。",
+  "以下コピーしてリクエストの下にペストして記入してください。 <br> # 問合せの情報 <br> - 発生箇所: 「箇所を記載」 <br> トリガ: 「事象が発生した際のきっかけとなった操作などを記載」 <br> 事象詳細: 「詳細を記載」 <br> エラーメッセージ: 「エラーメッセージを記載」"
 ];
 
-const GPT4V_EXAMPLES: string[] = [
-    "Compare the impact of interest rates and GDP in financial markets.",
-    "What is the expected trend for the S&P 500 index over the next five years? Compare it to the past S&P 500 performance",
-    "Can you identify any correlation between oil prices and stock market trends?"
-];
-
-interface Props {
-    onExampleClicked: (value: string) => void;
-    useGPT4V?: boolean;
-}
-
-export const ExampleList = ({ onExampleClicked, useGPT4V }: Props) => {
-    return (
-        <ul className={styles.examplesNavList}>
-            {(useGPT4V ? GPT4V_EXAMPLES : DEFAULT_EXAMPLES).map((question, i) => (
-                <li key={i}>
-                    <Example text={question} value={question} onClick={onExampleClicked} />
-                </li>
-            ))}
-        </ul>
-    );
+const ExampleList: React.FC = () => {
+  return (
+    <ul className={styles.examplesNavList}>
+      {templates.map((template, i) => (
+        <li key={i}>
+          <Example text={template} />
+        </li>
+      ))}
+    </ul>
+  );
 };
+
+export default ExampleList;
