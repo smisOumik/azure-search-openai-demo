@@ -1,6 +1,6 @@
 import React from 'react';
 import Example from './Example';
-import styles from './Example-module.css';
+import styles from './Example.module.css';
 
 const templates = [
   "記載ルール: テンプレートをコピーして貼り付け、必要事項を編集してください。「」の部分のみ修正すること。編集後「」を削除すること。改行を入れないでください。",
