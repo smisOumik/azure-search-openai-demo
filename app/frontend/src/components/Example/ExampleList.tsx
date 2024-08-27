@@ -2,6 +2,11 @@ import React from 'react';
 import Example from './Example';
 import styles from './Example.module.css';
 
+interface ExampleListProps {
+  onExampleCLicked?: (example: string) => void;
+  useGPT4V?: boolean;
+}
+
 const templates = [
   "記載ルール: テンプレートをコピーして貼り付け、必要事項を編集してください。「」の部分のみ修正すること。編集後「」を削除すること。改行を入れないでください。",
   "以下コピーしてください。<br> # リクエスト <br> - 「システム名を記載」に関する問合せがきました。「聞きたいことを記載」。",
