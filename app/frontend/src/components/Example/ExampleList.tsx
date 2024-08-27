@@ -13,7 +13,7 @@ const templates = [
   "以下コピーしてリクエストの下にペストして記入してください。 <br> # 問合せの情報 <br> - 発生箇所: 「箇所を記載」 <br> トリガ: 「事象が発生した際のきっかけとなった操作などを記載」 <br> 事象詳細: 「詳細を記載」 <br> エラーメッセージ: 「エラーメッセージを記載」"
 ];
 
-const ExampleList: React.FC = () => {
+const ExampleList: React.FC<ExampleListProps> = ({ onExampleClicked, useGPT4V }) => {
   return (
     <ul className={styles.examplesNavList}>
       {templates.map((template, i) => (
