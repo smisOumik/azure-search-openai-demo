@@ -3,7 +3,7 @@ import Example from './Example';
 import styles from './Example.module.css';
 
 interface ExampleListProps {
-  onExampleCLicked?: (example: string) => void;
+  onExampleClicked?: (example: string) => void;
   useGPT4V?: boolean;
 }
 
