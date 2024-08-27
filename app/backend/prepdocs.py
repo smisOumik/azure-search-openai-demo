@@ -30,8 +30,7 @@ from prepdocslib.pdfparser import DocumentAnalysisParser, LocalPdfParser
 from prepdocslib.strategy import DocumentAction, SearchInfo, Strategy
 from prepdocslib.textparser import TextParser
 from prepdocslib.textsplitter import SentenceTextSplitter, SimpleTextSplitter
-
-from prepdocslib.csvparser import CSVParser
+from prepdocslib.CSVparser import CSVParser
 
 logger = logging.getLogger("ingester")
 
