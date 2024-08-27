@@ -1,3 +1,1 @@
-import ExampleList from './ExampleList';
-export default ExampleList;
-export { ExampleList };
+export { default as ExampleList } from './ExampleList';
