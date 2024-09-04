@@ -16,18 +16,19 @@ class CSVParser(Parser):
         for encoding in encodings_to_try:
             try:
                 content_str = content_bytes.decode(encoding)
-                reader = csv.DictReader(StringIO(content_str))
+                # Use tab as the delimiter and set quotechar to None to handle commas within fields
+                reader = csv.DictReader(StringIO(content_str), delimiter='\t', quotechar=None)
                 
-                important_fields = [
-                    "No", "受付日時", "顧客会社名", "システム名", "発生箇所", 
-                    "受付概要", "受付詳細", "対応詳細", "原因"
-                ]
+                # Adjust important_fields based on your new CSV structure
+                important_fields = reader.fieldnames if reader.fieldnames else []
 
                 offset = 0
                 for row_num, row in enumerate(reader):
-                    processed_row: Dict[str, str] = {field: row.get(field, "") for field in important_fields}
+                    processed_row: Dict[str, str] = {field: row.get(field, "").strip() for field in important_fields}
                 
-                    processed_row["combined_description"] = f"{processed_row['受付概要']}{processed_row['受付詳細']}"
+                    # Adjust this based on your new CSV structure
+                    if "受付概要" in processed_row and "受付詳細" in processed_row:
+                        processed_row["combined_description"] = f"{processed_row['受付概要']}{processed_row['受付詳細']}"
 
                     # Convert the processed row to a string
                     page_text = "\n".join(f"{k}:{v}" for k, v in processed_row.items())
