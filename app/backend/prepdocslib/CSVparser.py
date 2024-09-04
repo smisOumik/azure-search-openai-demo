@@ -16,10 +16,10 @@ class CSVParser(Parser):
         for encoding in encodings_to_try:
             try:
                 content_str = content_bytes.decode(encoding)
-                # Use tab as the delimiter and set quotechar to None to handle commas within fields
-                reader = csv.DictReader(StringIO(content_str), delimiter='\t', quotechar=None)
+                # Use tab as the delimiter and disable quoting
+                reader = csv.DictReader(StringIO(content_str), delimiter='\t', quoting=csv.QUOTE_NONE, escapechar='\\')
                 
-                # Adjust important_fields based on your new CSV structure
+                # Rest of your code remains the same
                 important_fields = reader.fieldnames if reader.fieldnames else []
 
                 offset = 0
